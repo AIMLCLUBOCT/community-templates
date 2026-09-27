@@ -1,24 +1,29 @@
-# [Workshop Title]
+# 🎓 Workshop & Hands-on Lab Template
 
-> [Short summary of what students will build and learn during this hands-on workshop session]
-
-[![Track: Hands-on](https://img.shields.io/badge/Format-Hands--on_Workshop-purple.svg?style=flat-square)](#)
-[![Difficulty: Beginner](https://img.shields.io/badge/Level-Beginner-green.svg?style=flat-square)](#)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](#)
+A standardized scaffold for running AI/ML workshops, hackathon training sessions, and lab demos.
 
 ---
 
-## 📅 Workshop Details
-- **Date & Time:** [Date, Time IST]
-- **Venue:** AI Lab / Auditorium, Oriental College of Technology, Bhopal
-- **Instructor / Lead:** [Name / Title]
+## 📚 Interactive Notebooks (Google Colab)
 
-## 🎯 Learning Objectives
-1. Understand the core mathematical intuition behind [Topic].
-2. Implement [Algorithm/Model] from scratch using Python and [Framework].
-3. Evaluate model performance and deploy an interactive demo.
+Students can launch these interactive notebooks directly in Google Colab without local GPU configuration:
 
-## 📂 Materials Included
-- `slides/`: Presentation slide deck
-- `notebooks/`: `01_starter.ipynb` and `02_solution.ipynb`
-- `data/`: Sample datasets used during the exercise
+| Module | Topic | Colab Link |
+| :--- | :--- | :--- |
+| **01** | Exploratory Data Analysis (EDA) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AIMLCLUBOCT/community-templates/blob/main/workshop-template/notebooks/01_exploratory_data_analysis.ipynb) |
+| **02** | Scikit-Learn Supervised Classification | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AIMLCLUBOCT/community-templates/blob/main/workshop-template/notebooks/02_scikit_learn_classification.ipynb) |
+| **03** | PyTorch Deep Learning Starter | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AIMLCLUBOCT/community-templates/blob/main/workshop-template/notebooks/03_pytorch_deep_learning_starter.ipynb) |
+
+---
+
+## 🛠️ Local Setup
+
+1. Check environment prerequisites:
+   ```bash
+   python setup_check.py
+   ```
+
+2. Run Python lab script:
+   ```bash
+   python notebooks/workshop_lab.py
+   ```
