@@ -1,0 +1,38 @@
+name: Validate Templates
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Verify Template Structure
+        run: |
+          for dir in project-template research-template workshop-template event-template; do
+            if [ ! -d "$dir" ]; then
+              echo "Error: Directory $dir is missing!"
+              exit 1
+            fi
+            if [ ! -f "$dir/README.md" ]; then
+              echo "Error: $dir/README.md is missing!"
+              exit 1
+            fi
+          done
+          echo "All template directory structures are valid."
+
+      - name: Verify Python Code Syntax
+        run: |
+          find . -name "*.py" -not -path "*/.*" -exec python -m py_compile {} +
+          echo "All Python scripts compiled successfully without syntax errors."
