@@ -25,3 +25,9 @@
 | :--- | :--- | :--- | :--- |
 | Config A (Default) | -- | -- | -- |
 | Config B (Ablated) | -- | -- | -- |
+
+## 🚀 Running Experiments
+```bash
+pip install -r requirements.txt
+python src/experiment.py --config configs/default_config.json
+```

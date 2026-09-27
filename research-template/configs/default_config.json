@@ -1,0 +1,7 @@
+{
+  "experiment_name": "baseline_classification",
+  "random_seed": 42,
+  "test_split": 0.2,
+  "model_type": "random_forest",
+  "n_estimators": 100
+}
