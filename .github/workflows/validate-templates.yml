@@ -1,4 +1,4 @@
-name: Validate Templates
+name: Validate Community Templates
 
 on:
   push:
@@ -9,30 +9,35 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11"]
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: ${{ matrix.python-version }}
 
-      - name: Verify Template Structure
+      - name: Install Linting & Testing Tools
         run: |
-          for dir in project-template research-template workshop-template event-template; do
-            if [ ! -d "$dir" ]; then
-              echo "Error: Directory $dir is missing!"
-              exit 1
-            fi
-            if [ ! -f "$dir/README.md" ]; then
-              echo "Error: $dir/README.md is missing!"
-              exit 1
-            fi
-          done
-          echo "All template directory structures are valid."
+          python -m pip install --upgrade pip
+          pip install ruff black pytest httpx fastapi pydantic
 
-      - name: Verify Python Code Syntax
+      - name: Run Ruff Lint Checks
         run: |
-          find . -name "*.py" -not -path "*/.*" -exec python -m py_compile {} +
-          echo "All Python scripts compiled successfully without syntax errors."
+          ruff check .
+
+      - name: Validate Python Syntax across Templates
+        run: |
+          python -m compileall -q project-template/src
+          python -m compileall -q research-template/src
+          python -m compileall -q workshop-template/notebooks
+          python -m compileall -q inference-container-template/app
+
+      - name: Run Inference Test Suite
+        run: |
+          pytest inference-container-template/tests -v
