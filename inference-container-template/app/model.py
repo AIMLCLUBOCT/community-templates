@@ -1,6 +1,7 @@
 import math
 import time
-from typing import List, Dict, Any, Tuple
+from typing import Any, Dict, List, Tuple
+
 
 class ModelEngine:
     """Production-ready inference engine wrapper supporting batch inference."""
@@ -16,7 +17,7 @@ class ModelEngine:
         time.sleep(0.05)
         self.is_loaded = True
 
-    def predict(self, batch_features: List[List[float]]) -> List[Tuple[float, float]]:
+    def predict(self, batch_features: list[list[float]]) -> list[tuple[float, float]]:
         """
         Execute forward pass on a batch of numerical vectors.
         Returns a list of (prediction_value, probability).

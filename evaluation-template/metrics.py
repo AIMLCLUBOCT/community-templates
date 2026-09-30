@@ -1,18 +1,19 @@
 """Model evaluation metrics calculation engine."""
 import math
-from typing import List, Dict, Any, Union
+from typing import Any, Dict, List, Union
+
 
 def calculate_classification_metrics(
-    y_true: List[int], y_pred: List[int]
-) -> Dict[str, float]:
+    y_true: list[int], y_pred: list[int]
+) -> dict[str, float]:
     """Calculate accuracy, precision, recall, and f1 score."""
     if len(y_true) != len(y_pred) or not y_true:
         raise ValueError("y_true and y_pred must be non-empty lists of the same length.")
 
-    tp = sum(1 for yt, yp in zip(y_true, y_pred) if yt == 1 and yp == 1)
-    tn = sum(1 for yt, yp in zip(y_true, y_pred) if yt == 0 and yp == 0)
-    fp = sum(1 for yt, yp in zip(y_true, y_pred) if yt == 0 and yp == 1)
-    fn = sum(1 for yt, yp in zip(y_true, y_pred) if yt == 1 and yp == 0)
+    tp = sum(1 for yt, yp in zip(y_true, y_pred, strict=False) if yt == 1 and yp == 1)
+    tn = sum(1 for yt, yp in zip(y_true, y_pred, strict=False) if yt == 0 and yp == 0)
+    fp = sum(1 for yt, yp in zip(y_true, y_pred, strict=False) if yt == 0 and yp == 1)
+    fn = sum(1 for yt, yp in zip(y_true, y_pred, strict=False) if yt == 1 and yp == 0)
 
     total = len(y_true)
     accuracy = (tp + tn) / total
@@ -36,15 +37,15 @@ def calculate_classification_metrics(
     }
 
 def calculate_regression_metrics(
-    y_true: List[float], y_pred: List[float]
-) -> Dict[str, float]:
+    y_true: list[float], y_pred: list[float]
+) -> dict[str, float]:
     """Calculate MAE, MSE, and RMSE."""
     if len(y_true) != len(y_pred) or not y_true:
         raise ValueError("y_true and y_pred must be non-empty lists of the same length.")
 
     n = len(y_true)
-    mae = sum(abs(yt - yp) for yt, yp in zip(y_true, y_pred)) / n
-    mse = sum((yt - yp) ** 2 for yt, yp in zip(y_true, y_pred)) / n
+    mae = sum(abs(yt - yp) for yt, yp in zip(y_true, y_pred, strict=False)) / n
+    mse = sum((yt - yp) ** 2 for yt, yp in zip(y_true, y_pred, strict=False)) / n
     rmse = math.sqrt(mse)
 
     return {

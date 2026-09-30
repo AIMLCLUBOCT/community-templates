@@ -1,23 +1,25 @@
 import time
-from datetime import datetime, timezone
 from contextlib import asynccontextmanager
+from datetime import datetime, timezone
+
 from fastapi import FastAPI, HTTPException, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
-from prometheus_client import Counter, Histogram, generate_latest, CONTENT_TYPE_LATEST
+from prometheus_client import CONTENT_TYPE_LATEST, Counter, Histogram, generate_latest
 
-from app.schemas import PredictionRequest, PredictionResponse, PredictionOutput, HealthResponse
 from app.model import ModelEngine
+from app.schemas import HealthResponse, PredictionOutput, PredictionRequest, PredictionResponse
 
 START_TIME = time.time()
 REQUEST_COUNT = Counter("inference_requests_total", "Total inference requests", ["endpoint", "status"])
 REQUEST_LATENCY = Histogram("inference_latency_seconds", "Inference latency in seconds", ["endpoint"])
 
-model_engine: ModelEngine = None
+model_engine: ModelEngine = ModelEngine()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     global model_engine
-    model_engine = ModelEngine()
+    if model_engine is None or not model_engine.is_loaded:
+        model_engine = ModelEngine()
     yield
 
 app = FastAPI(
@@ -62,7 +64,7 @@ def predict(payload: PredictionRequest):
 
     start_time = time.perf_counter()
     raw_vectors = [item.features for item in payload.inputs]
-    
+
     try:
         raw_outputs = model_engine.predict(raw_vectors)
     except Exception as exc:
@@ -79,7 +81,7 @@ def predict(payload: PredictionRequest):
             prediction=pred,
             probability=prob
         )
-        for item, (pred, prob) in zip(payload.inputs, raw_outputs)
+        for item, (pred, prob) in zip(payload.inputs, raw_outputs, strict=False)
     ]
 
     return PredictionResponse(

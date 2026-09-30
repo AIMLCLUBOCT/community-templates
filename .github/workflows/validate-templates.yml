@@ -25,7 +25,7 @@ jobs:
       - name: Install Linting & Testing Tools
         run: |
           python -m pip install --upgrade pip
-          pip install ruff black pytest httpx fastapi pydantic
+          pip install ruff black pytest httpx fastapi pydantic prometheus-client numpy
 
       - name: Run Ruff Lint Checks
         run: |

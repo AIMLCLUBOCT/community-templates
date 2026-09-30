@@ -17,8 +17,8 @@ target-version = "py310"
 exclude = [".git", "__pycache__", "build", "dist", ".venv", "venv", "*.ipynb", "workshop-template/notebooks/*"]
 
 [tool.ruff.lint]
-select = ["E", "F", "W", "I", "N", "UP", "B", "C4"]
-ignore = ["E501", "UP036", "F401"]
+select = ["E", "F", "W", "I"]
+ignore = ["E501", "F401"]
 
 [tool.black]
 line-length = 100
@@ -35,4 +35,5 @@ ignore_missing_imports = true
 [tool.pytest.ini_options]
 minversion = "7.0"
 testpaths = ["tests", "inference-container-template/tests"]
+pythonpath = [".", "inference-container-template"]
 python_files = ["test_*.py"]

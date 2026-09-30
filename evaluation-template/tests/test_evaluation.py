@@ -1,10 +1,12 @@
-import pytest
-import sys
 import os
+import sys
+
+import pytest
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from metrics import calculate_classification_metrics, calculate_regression_metrics
 from reporter import EvaluationReporter
+
 
 def test_classification_metrics():
     y_true = [1, 0, 1, 1, 0, 1]

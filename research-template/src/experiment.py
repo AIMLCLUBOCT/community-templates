@@ -5,24 +5,24 @@ from __future__ import annotations
 import argparse
 import json
 import logging
-from pathlib import Path
 import sys
+from pathlib import Path
 from typing import Any, Dict
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
 
 
-def load_config(config_path: str | Path) -> Dict[str, Any]:
+def load_config(config_path: str | Path) -> dict[str, Any]:
     """Load JSON experiment configuration."""
     path = Path(config_path)
     if not path.exists():
         raise FileNotFoundError(f"Configuration file not found: {path}")
-    with open(path, "r", encoding="utf-8") as f:
+    with open(path, encoding="utf-8") as f:
         return json.load(f)
 
 
-def run_experiment(config: Dict[str, Any]) -> Dict[str, float]:
+def run_experiment(config: dict[str, Any]) -> dict[str, float]:
     """Execute reproducible baseline workflow."""
     seed = config.get("random_seed", 42)
     name = config.get("experiment_name", "unnamed_run")

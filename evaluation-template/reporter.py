@@ -1,12 +1,13 @@
 """Markdown and JSON report generator for model evaluation."""
 import json
-from typing import Dict, Any
+from typing import Any, Dict
+
 
 class EvaluationReporter:
     """Format and export evaluation metrics to Markdown or JSON."""
 
     @staticmethod
-    def to_markdown_table(metrics: Dict[str, Any], title: str = "Model Performance Summary") -> str:
+    def to_markdown_table(metrics: dict[str, Any], title: str = "Model Performance Summary") -> str:
         lines = [
             f"### {title}\n",
             "| Metric | Value |",
@@ -17,5 +18,5 @@ class EvaluationReporter:
         return "\n".join(lines) + "\n"
 
     @staticmethod
-    def to_json(metrics: Dict[str, Any]) -> str:
+    def to_json(metrics: dict[str, Any]) -> str:
         return json.dumps(metrics, indent=2)

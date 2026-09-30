@@ -1,8 +1,9 @@
 """Load testing and latency benchmarking script for inference endpoint."""
-import time
-import statistics
 import concurrent.futures
-from typing import List, Dict, Any
+import statistics
+import time
+from typing import Any, Dict, List
+
 import requests
 
 ENDPOINT = "http://localhost:8000/predict"
@@ -27,7 +28,7 @@ def send_request(session: requests.Session) -> float:
 
 def run_benchmark():
     print(f"Starting benchmark: {TOTAL_REQUESTS} requests across {CONCURRENT_USERS} concurrent workers...")
-    latencies: List[float] = []
+    latencies: list[float] = []
 
     with requests.Session() as session:
         with concurrent.futures.ThreadPoolExecutor(max_workers=CONCURRENT_USERS) as executor:

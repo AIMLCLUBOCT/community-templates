@@ -2,6 +2,7 @@
 
 import numpy as np
 
+
 def main():
     print("AI/ML Project Pipeline Initialized.")
     sample_data = np.array([1.0, 2.0, 3.0, 4.0, 5.0])
