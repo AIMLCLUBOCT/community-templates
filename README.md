@@ -22,8 +22,30 @@ This repository is marked as an official **GitHub Template Repository**. When st
 | 🔬 **Research Template** | [`research-template/`](./research-template/) | Academic paper replications, benchmark ablation studies, and empirical experiments. |
 | 🛠️ **Workshop Template** | [`workshop-template/`](./workshop-template/) | Dual-notebook hands-on workshops with starter exercises and solution keys. |
 | 🎤 **Event Template** | [`event-template/`](./event-template/) | Archival records for hackathons, tech talks, orientations, and webinars. |
+| 🐳 **Inference Container Template** | [`inference-container-template/`](./inference-container-template/) | Production FastAPI + Docker container with Prometheus metrics, health checks, and latency benchmarking. |
+| 📏 **Evaluation & Metrics Template** | [`evaluation-template/`](./evaluation-template/) | Classification/Regression metrics calculation and automated Markdown/JSON benchmark reporters. |
 
 ---
+
+## 🛠️ Template Breakdown
+
+### 1. `project-template/`
+Standard Python packaging with `src/` layout, unit testing via `pytest`, code formatting with `ruff`, and CI workflow configurations.
+
+### 2. `research-template/`
+Structured layout for reproducible scientific experiments, seed configs, ablation studies, and LaTeX/Markdown paper summaries.
+
+### 3. `workshop-template/`
+Interactive learning format featuring `01_starter.ipynb` (student exercises with TODOs) and `02_solution.ipynb` (instructor reference).
+
+### 4. `event-template/`
+Event documentation repository format for posters, keynote slide decks, speaker bios, and participant feedback summaries.
+
+### 5. `inference-container-template/`
+Turnkey microservice container packaging models with FastAPI, Uvicorn, Pydantic v2 schemas, `/metrics`, and `/health` probes.
+
+### 6. `evaluation-template/`
+Evaluation utility functions that generate GitHub-ready Markdown tables for PRs, accuracy reports, and confusion matrices.
 
 ## 🚀 How to Use
 
