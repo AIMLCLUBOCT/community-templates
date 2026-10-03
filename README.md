@@ -9,17 +9,21 @@
 <br/><br/>
 
 [![Live Web Portal](https://img.shields.io/badge/Web_Portal-aimlcluboct.github.io-00F5FF?style=for-the-badge&logo=githubpages&logoColor=black)](https://aimlcluboct.github.io/)
+[![Live Activities](https://img.shields.io/badge/Live_Activities-Student_Radar-FF6B6B?style=for-the-badge&logo=rss)](https://aimlcluboct.github.io/#activities)
 [![Use this template](https://img.shields.io/badge/GitHub-Use_This_Template-2ea44f?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AIMLCLUBOCT/community-templates/generate)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
-[![AIML Club OCT](https://img.shields.io/badge/AIML_Club-OCT_Bhopal-0052CC?style=for-the-badge&logo=googlechrome&logoColor=white)](https://aimlcluboct.in)
+[![AI & Machine Learning Club](https://img.shields.io/badge/AI_%26_ML_Club-OCT_Bhopal-0052CC?style=for-the-badge&logo=googlechrome&logoColor=white)](https://aimlcluboct.in)
 
 </div>
 
 ---
 
+> [!IMPORTANT]
+> **📢 Live Student Notice & Activity Board:** Check our **[Live Activities Radar on aimlcluboct.github.io/#activities ↗](https://aimlcluboct.github.io/#activities)** for new template releases, starter projects, and community sprint announcements.
+
 ## 🧭 Overview
 
-This repository is marked as an official **GitHub Template Repository**. When starting a new AI/ML project, research experiment, workshop, or event archive for the club, click the green **"Use this template"** button above to generate your repository with pre-configured structure, clean READMEs, and community health files.
+This repository is marked as an official **GitHub Template Repository** for the **AI & Machine Learning Club (AIML Club OCT)**, **Oriental College of Technology, Bhopal**. When starting a new AI/ML project, research experiment, workshop, or event archive for the club, click the green **"Use this template"** button above to generate your repository with pre-configured structure, clean READMEs, and community health files.
 
 ---
 
